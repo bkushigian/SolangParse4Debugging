@@ -12,10 +12,10 @@ struct Opt {
     #[clap(num_args=0..)]
     pub filenames: Vec<String>,
 
-    #[clap(short, long, num_args=1..)]
+    #[clap(short='I', long, num_args=1..)]
     pub import_paths: Vec<String>,
 
-    #[clap(short, long, num_args=1..)]
+    #[clap(short='m', long, num_args=1..)]
     pub import_maps: Vec<String>,
 }
 
@@ -46,7 +46,7 @@ fn main() {
         let ns = parse_and_resolve(OsStr::new(filename), &mut cache, solang::Target::EVM);
         if ns.diagnostics.any_errors() {
             println!(
-                "\n{}  {} parsing {}  {}",
+                "\n{}  {}: {}  {}",
                 Color::Cyan.bold().paint("====="),
                 Color::Red.bold().paint("Error"),
                 Color::White.bold().paint(filename),

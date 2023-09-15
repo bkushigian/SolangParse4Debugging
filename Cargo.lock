@@ -1797,10 +1797,11 @@ checksum = "62bb4feee49fdd9f707ef802e22365a35de4b7b299de4763d44bfea899442ff9"
 [[package]]
 name = "solang"
 version = "0.3.2"
-source = "git+https://github.com/hyperledger/solang.git?rev=70af554c42748009e414e6263dd4607fb380e5dc#70af554c42748009e414e6263dd4607fb380e5dc"
+source = "git+https://github.com/hyperledger/solang.git?rev=ea4baceaa22cc49624f431ba37c5ffd40a9da13d#ea4baceaa22cc49624f431ba37c5ffd40a9da13d"
 dependencies = [
  "anchor-syn",
  "base58",
+ "bitflags 2.4.0",
  "bitvec",
  "blake2-rfc",
  "cc",
@@ -1850,7 +1851,7 @@ dependencies = [
 [[package]]
 name = "solang-parser"
 version = "0.3.2"
-source = "git+https://github.com/hyperledger/solang.git?rev=70af554c42748009e414e6263dd4607fb380e5dc#70af554c42748009e414e6263dd4607fb380e5dc"
+source = "git+https://github.com/hyperledger/solang.git?rev=ea4baceaa22cc49624f431ba37c5ffd40a9da13d#ea4baceaa22cc49624f431ba37c5ffd40a9da13d"
 dependencies = [
  "itertools 0.11.0",
  "lalrpop",
