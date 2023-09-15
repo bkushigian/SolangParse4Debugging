@@ -1,0 +1,13 @@
+[package]
+name = "solang_parse"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ansi_term = "0.12"
+clap = { version = "4.0.29", features = ["derive"] }
+clap_complete = "4.0.6"
+solang = { git = "https://github.com/hyperledger/solang.git", rev = "70af554c42748009e414e6263dd4607fb380e5dc", default-features = false }
+solang-parser = { git = "https://github.com/hyperledger/solang.git", rev = "70af554c42748009e414e6263dd4607fb380e5dc" }
