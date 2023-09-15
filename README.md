@@ -14,6 +14,8 @@ I'm also cataloging test cases where solang fails.
 
 ### Overloaded Function Order Matters
 
+This corresponds to [Issue 1534](https://github.com/hyperledger/solang/issues/1534).
+
 Run:
 
 ```bash
