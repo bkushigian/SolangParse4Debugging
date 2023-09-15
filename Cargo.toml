@@ -9,5 +9,5 @@ edition = "2021"
 ansi_term = "0.12"
 clap = { version = "4.0.29", features = ["derive"] }
 clap_complete = "4.0.6"
-solang = { git = "https://github.com/hyperledger/solang.git", rev = "70af554c42748009e414e6263dd4607fb380e5dc", default-features = false }
-solang-parser = { git = "https://github.com/hyperledger/solang.git", rev = "70af554c42748009e414e6263dd4607fb380e5dc" }
+solang = { git = "https://github.com/hyperledger/solang.git", rev = "ea4baceaa22cc49624f431ba37c5ffd40a9da13d", default-features = false }
+solang-parser = { git = "https://github.com/hyperledger/solang.git", rev = "ea4baceaa22cc49624f431ba37c5ffd40a9da13d" }

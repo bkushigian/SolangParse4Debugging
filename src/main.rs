@@ -46,13 +46,14 @@ fn main() {
         let ns = parse_and_resolve(OsStr::new(filename), &mut cache, solang::Target::EVM);
         if ns.diagnostics.any_errors() {
             println!(
-                "\n{}",
-                Color::Cyan
-                    .bold()
-                    .paint("============================================================")
+                "\n{}  {} parsing {}  {}",
+                Color::Cyan.bold().paint("====="),
+                Color::Red.bold().paint("Error"),
+                Color::White.bold().paint(filename),
+                Color::Cyan.bold().paint("=====")
             );
-            println!("{}: Parsing {}", Color::Red.bold().paint("Error"), filename);
             ns.print_diagnostics(&cache, false);
+            std::process::exit(ns.diagnostics.any_errors() as i32);
         }
     }
 }
