@@ -21,7 +21,7 @@ jobs:
       - name: Clone Gambit repository
         run: |
           cd ~
-          git clone https://github.com/Certora/Gambit
+          git clone -b ben/build_scripts https://github.com/Certora/Gambit
           pwd
           ls -a
           ls Gambit
