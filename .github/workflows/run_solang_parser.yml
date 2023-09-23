@@ -1,0 +1,45 @@
+name: Solang Parser Workflow
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up machine
+        uses: actions/[email protected]
+
+      - name: Download and install solc 0.8.17
+        run: |
+          wget https://github.com/ethereum/solidity/releases/download/v0.8.17/solc-static-linux
+          chmod +x solc-static-linux
+          sudo mv solc-static-linux /usr/local/bin/solc
+
+      - name: Clone solang_parser repository
+        run: git clone https://github.com/bkushigian/solang_parser
+
+      - name: Install solang_parser
+        run: cd solang_parser && cargo install --path .
+
+      - name: Install Node.js and NPM
+        uses: actions/setup-[email protected]
+        with:
+          node-version: 14
+
+      - name: Clone seaport repository and run npm install
+        run: |
+          git clone https://github.com/ProjectOpenSea/seaport
+          cd seaport
+          npm install
+
+      - name: Clone solmate repository and run npm install
+        run: |
+          git clone https://github.com/transmissions11/solmate
+          cd solmate
+          npm install
