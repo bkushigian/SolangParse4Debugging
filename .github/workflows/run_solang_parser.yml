@@ -16,7 +16,7 @@ jobs:
       - uses: actions-rust-lang/setup-rust-toolchain@v1
       - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 20
 
       - name: Clone Gambit repository
         run: |
@@ -37,18 +37,18 @@ jobs:
 
       - name: Download and install solc 0.8.17
         run: |
-          pwd
           wget https://github.com/ethereum/solidity/releases/download/v0.8.17/solc-static-linux
           chmod +x solc-static-linux
           sudo mv solc-static-linux /usr/local/bin/solc8.17
 
       - name: Clone seaport repository and run npm install
         run: |
+          pwd
+          cd ~
           git clone https://github.com/ProjectOpenSea/seaport
           cd seaport
           npm install
           run_on_hardhat . contracts --solc solc8.17 --solang_parser
-          cd -
 
       - name: Clone solmate repository and run npm install
         run: |
