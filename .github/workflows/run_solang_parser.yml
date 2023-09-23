@@ -12,23 +12,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up machine
-        uses: actions/[email protected]
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
 
       - name: Download and install solc 0.8.17
         run: |
           wget https://github.com/ethereum/solidity/releases/download/v0.8.17/solc-static-linux
           chmod +x solc-static-linux
-          sudo mv solc-static-linux /usr/local/bin/solc
+          sudo mv solc-static-linux /usr/local/bin/solc8.17
 
-      - name: Clone solang_parser repository
+      - name: Clone SolangeParse4Debugging repository
         run: git clone https://github.com/bkushigian/SolangParse4Debugging
 
       - name: Install solang_parser
         run: cd solang_parser && cargo install --path .
 
       - name: Install Node.js and NPM
-        uses: actions/setup-[email protected]
+        uses: actions/setup-node@v3
         with:
           node-version: 14
 
