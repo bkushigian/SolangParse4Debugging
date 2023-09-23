@@ -15,6 +15,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions-rust-lang/setup-rust-toolchain@v1
 
+      - name: Clone Gambit repository
+        run: |
+          git clone https://github.com/Certora/Gambit
+          pwd
+          ls
+          chmod +x Gambit/scripts/run_on_hardhat.py
+          ln -s $PWD/Gambit/scripts/run_on_hardhat.py /usr/local/bin/run_on_hardhat
+
       - name: Download and install solc 0.8.17
         run: |
           wget https://github.com/ethereum/solidity/releases/download/v0.8.17/solc-static-linux
@@ -24,15 +32,8 @@ jobs:
       - name: Clone SolangeParse4Debugging repository
         run: git clone https://github.com/bkushigian/SolangParse4Debugging
 
-      - name: Clone Gambit repository
-        run: |
-          git clone https://github.com/Certora/Gambit
-          ls
-          chmod +x Gambit/scripts/run_on_hardhat.py
-          ln -s $PWD/Gambit/scripts/run_on_hardhat.py /usr/local/bin/run_on_hardhat
-
       - name: Install solang_parser
-        run: cd SolangParser4Debugging && cargo install --path .
+        run: cd SolangParser4Debugging && cargo install --path . && cd -
 
       - name: Install Node.js and NPM
         uses: actions/setup-node@v3
@@ -50,6 +51,7 @@ jobs:
           cd seaport
           npm install
           run_on_hardhat . contracts --solc solc8.17 --solang_parser
+          cd -
 
       - name: Clone solmate repository and run npm install
         run: |
@@ -57,3 +59,4 @@ jobs:
           cd solmate
           npm install
           run_on_hardhat . src/auth src/mixins src/tokens src/utils  --solc solc8.15 --import_paths . src lib
+          cd -
