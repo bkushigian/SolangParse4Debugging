@@ -29,6 +29,9 @@ jobs:
           chmod +x Gambit/scripts/run_on_hardhat.py
           ln -s $PWD/Gambit/scripts/run_on_hardhat.py /usr/local/bin/run_on_hardhat
 
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
       - name: Install this repo
         run: cargo install --path .
 
@@ -38,13 +41,6 @@ jobs:
           wget https://github.com/ethereum/solidity/releases/download/v0.8.17/solc-static-linux
           chmod +x solc-static-linux
           sudo mv solc-static-linux /usr/local/bin/solc8.17
-
-      - name: Install Foundry Forge
-        run: |
-          pwd
-          cd ~
-          curl -L https://foundry.paradigm.xyz | bash
-          foundryup
 
       - name: Clone seaport repository and run npm install
         run: |
