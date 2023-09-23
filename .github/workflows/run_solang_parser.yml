@@ -14,9 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install this repo
+        run: cargo install --path .
 
       - name: Clone Gambit repository
         run: |
+          cd ~
           git clone https://github.com/Certora/Gambit
           pwd
           ls
@@ -25,23 +32,15 @@ jobs:
 
       - name: Download and install solc 0.8.17
         run: |
+          pwd
           wget https://github.com/ethereum/solidity/releases/download/v0.8.17/solc-static-linux
           chmod +x solc-static-linux
           sudo mv solc-static-linux /usr/local/bin/solc8.17
 
-      - name: Clone SolangeParse4Debugging repository
-        run: git clone https://github.com/bkushigian/SolangParse4Debugging
-
-      - name: Install solang_parser
-        run: cd SolangParser4Debugging && cargo install --path . && cd -
-
-      - name: Install Node.js and NPM
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
-
       - name: Install Foundry Forge
         run: |
+          pwd
+          cd ~
           curl -L https://foundry.paradigm.xyz | bash
           foundryup
 
