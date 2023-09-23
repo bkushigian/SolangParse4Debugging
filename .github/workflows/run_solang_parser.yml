@@ -27,8 +27,8 @@ jobs:
       - name: Clone Gambit repository
         run: |
           git clone https://github.com/Certora/Gambit
-          chmod +x gambit/scripts/run_on_hardhat.py
-          ln -s $PWD/gambit/scripts/run_on_hardhat.py /usr/local/bin/run_on_hardhat
+          chmod +x Gambit/scripts/run_on_hardhat.py
+          ln -s $PWD/Gambit/scripts/run_on_hardhat.py /usr/local/bin/run_on_hardhat
 
       - name: Install solang_parser
         run: cd SolangParser4Debugging && cargo install --path .
