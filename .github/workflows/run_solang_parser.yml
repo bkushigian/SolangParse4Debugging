@@ -22,7 +22,7 @@ jobs:
           sudo mv solc-static-linux /usr/local/bin/solc
 
       - name: Clone solang_parser repository
-        run: git clone https://github.com/bkushigian/solang_parser
+        run: git clone https://github.com/bkushigian/SolangParse4Debugging
 
       - name: Install solang_parser
         run: cd solang_parser && cargo install --path .
