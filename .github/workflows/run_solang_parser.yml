@@ -43,7 +43,6 @@ jobs:
 
       - name: Clone seaport repository and run npm install
         run: |
-          pwd
           cd ~
           git clone https://github.com/ProjectOpenSea/seaport
           cd seaport
@@ -52,8 +51,8 @@ jobs:
 
       - name: Clone solmate repository and run npm install
         run: |
+          cd ~
           git clone https://github.com/transmissions11/solmate
           cd solmate
           npm install
           run_on_hardhat . src/auth src/mixins src/tokens src/utils  --solc solc8.15 --import_paths . src lib
-          cd -
