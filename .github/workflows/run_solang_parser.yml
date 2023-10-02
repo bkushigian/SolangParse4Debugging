@@ -17,6 +17,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+      - uses: actions/upload-artifact@v3
+        with:
+          name: tool-run-data
+          path: ~/**/data_collect
+
 
       - name: Clone Gambit repository
         run: |
@@ -53,7 +58,7 @@ jobs:
           git clone https://github.com/ProjectOpenSea/seaport
           cd seaport
           npm install
-          run_on_hardhat . contracts --solc solc8.17 --solang_parser
+          run_on_hardhat . contracts --collect_data --solc solc8.17 --solang_parser
 
       - name: Clone solmate repository and run npm install
         run: |
@@ -61,4 +66,4 @@ jobs:
           git clone https://github.com/transmissions11/solmate
           cd solmate
           npm install
-          run_on_hardhat . src/auth src/mixins src/tokens src/utils  --solc solc8.15 --import_paths . src lib
+          run_on_hardhat . src/auth src/mixins src/tokens src/utils  --collect_data --solc solc8.15 --import_paths . src lib
