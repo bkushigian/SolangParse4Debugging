@@ -17,11 +17,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-      - uses: actions/upload-artifact@v3
-        with:
-          name: tool-run-data
-          path: ~/**/data_collect
-
 
       - name: Clone Gambit repository
         run: |
@@ -67,3 +62,8 @@ jobs:
           cd solmate
           npm install
           run_on_hardhat . src/auth src/mixins src/tokens src/utils  --collect_data --solc solc8.15 --import_paths . src lib
+      - uses: actions/upload-artifact@v3
+        with:
+          name: tool-run-data
+          path: ~/**/data_collect
+
