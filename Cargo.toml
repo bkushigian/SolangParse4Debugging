@@ -11,5 +11,5 @@ clap = { version = "4.0.29", features = [
     "derive",
 ] }
 clap_complete = "4.0.6"
-solang = { git = "https://github.com/hyperledger/solang.git", rev = "c53d8d998e0578417b281696fa31b8662e3856b1", default-features = false }
-solang-parser = { git = "https://github.com/hyperledger/solang.git", rev = "c53d8d998e0578417b281696fa31b8662e3856b1" }
+solang = { git = "https://github.com/hyperledger/solang.git", rev = "d6f73d3fdb349204097fff63338cf4d89e301b4b", default-features = false }
+solang-parser = { git = "https://github.com/hyperledger/solang.git", rev = "d6f73d3fdb349204097fff63338cf4d89e301b4b" }
