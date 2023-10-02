@@ -61,7 +61,7 @@ jobs:
           git clone https://github.com/transmissions11/solmate
           cd solmate
           npm install
-          run_on_hardhat . src/auth src/mixins src/tokens src/utils  --collect_data --solc solc8.15 --import_paths . src lib
+          run_on_hardhat . src/auth src/mixins src/tokens src/utils  --collect_data --solc solc8.15 --solang_parser --import_paths . src lib
       - uses: actions/upload-artifact@v3
         with:
           name: tool-run-data
