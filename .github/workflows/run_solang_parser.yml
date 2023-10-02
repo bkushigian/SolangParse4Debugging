@@ -41,6 +41,12 @@ jobs:
           chmod +x solc-static-linux
           sudo mv solc-static-linux /usr/local/bin/solc8.17
 
+      - name: Download and install solc 0.8.15
+        run: |
+          wget https://github.com/ethereum/solidity/releases/download/v0.8.15/solc-static-linux
+          chmod +x solc-static-linux
+          sudo mv solc-static-linux /usr/local/bin/solc8.15
+
       - name: Clone seaport repository and run npm install
         run: |
           cd ~
