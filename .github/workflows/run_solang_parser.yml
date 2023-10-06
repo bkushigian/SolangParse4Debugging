@@ -49,6 +49,9 @@ jobs:
           sudo mv solc-static-linux /usr/local/bin/solc8.20
 
       # [Collect Data From Different OS Repos]
+      - name: "Setup Summary"
+        run: |
+          echo "# Summary" > ~/summary.md
       - name: Collect Data on Seaport
         run: |
           cd ~
@@ -56,8 +59,9 @@ jobs:
           cd seaport
           npm install
           run_on_hardhat . contracts --collect_data --solc solc8.17 --solang_parser
-          echo "# Seaport Summary" >> ~/summary.md
+          echo "## Seaport Summary" >> ~/summary.md
           cat summary.md >> ~/summary.md
+          mv summary.json ~/seaport_summary.json
 
       - name: Collect Data on Solmate
         run: |
@@ -66,8 +70,9 @@ jobs:
           cd solmate
           npm install
           run_on_hardhat . src/auth src/mixins src/tokens src/utils  --collect_data --solc solc8.15 --solang_parser --import_paths . src lib
-          echo "# Solmate Summary" >> ~/summary.md
+          echo "## Solmate Summary" >> ~/summary.md
           cat summary.md >> ~/summary.md
+          mv summary.json ~/solmate_summary.json
 
       - name: Collect Data on OpenZeppelin
         run: |
@@ -76,8 +81,15 @@ jobs:
           cd openzeppelin-contracts
           npm install
           run_on_hardhat . contracts --collect_data --solc solc8.20 --solang_parser
-          echo "# OpenZeppelin Summary" >> ~/summary.md
+          echo "## OpenZeppelin Summary" >> ~/summary.md
           cat summary.md >> ~/summary.md
+          mv summary.json ~/openzeppelin_summary.json
+
+      # Combine summary jsons
+      - name: Combine JSONs
+        run: |
+          cd ~
+          python3 python/combine_jsons.py *_summary.json
 
       # [Push Summary to Repo]
       - name: Configure Git
