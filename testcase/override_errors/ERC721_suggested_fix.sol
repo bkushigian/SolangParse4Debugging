@@ -18,7 +18,7 @@ abstract contract ERC165 is IERC165 {
 abstract contract ERC721 is ERC165 {
     function supportsInterface(
         bytes4 interfaceId
-    ) public view virtual override(ERC165) returns (bool) {
+    ) public view virtual override(IERC165, ERC165) returns (bool) {
         return interfaceId == interfaceId;
     }
 }
