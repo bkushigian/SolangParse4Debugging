@@ -88,8 +88,9 @@ jobs:
       # Combine summary jsons
       - name: Combine JSONs
         run: |
+          COMBINE_JSONS_PY="$(PWD)"/python/combine_jsons.py
           cd ~
-          python3 python/combine_jsons.py *_summary.json
+          python3 "$COMBINE_JSONS_PY" *_summary.json
 
       # [Push Summary to Repo]
       - name: Configure Git
