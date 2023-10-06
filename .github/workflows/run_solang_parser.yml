@@ -47,7 +47,13 @@ jobs:
           chmod +x solc-static-linux
           sudo mv solc-static-linux /usr/local/bin/solc8.15
 
-      - name: Clone seaport repository and run npm install
+      - name: Download and install solc 0.8.20
+        run: |
+          wget https://github.com/ethereum/solidity/releases/download/v0.8.20/solc-static-linux
+          chmod +x solc-static-linux
+          sudo mv solc-static-linux /usr/local/bin/solc8.20
+
+      - name: Collect Data on Seaport
         run: |
           cd ~
           git clone https://github.com/ProjectOpenSea/seaport
@@ -57,7 +63,7 @@ jobs:
           echo "# Seaport Summary" >> ~/summary.md
           cat summary.md >> ~/summary.md
 
-      - name: Clone solmate repository and run npm install
+      - name: Collect Data on Solmate
         run: |
           cd ~
           git clone https://github.com/transmissions11/solmate
@@ -65,6 +71,16 @@ jobs:
           npm install
           run_on_hardhat . src/auth src/mixins src/tokens src/utils  --collect_data --solc solc8.15 --solang_parser --import_paths . src lib
           echo "# Solmate Summary" >> ~/summary.md
+          cat summary.md >> ~/summary.md
+
+      - name: Collect Data on OpenZeppelin
+        run: |
+          cd ~
+          git clone https://github.com/OpenZeppelin/openzeppelin-contracts
+          cd openzeppelin-contracts
+          npm install
+          run_on_hardhat . contracts --collect_data --solc solc8.20 --solang_parser
+          echo "# OpenZeppelin Summary" >> ~/summary.md
           cat summary.md >> ~/summary.md
 
       - uses: actions/upload-artifact@v3
@@ -78,4 +94,3 @@ jobs:
           name: summary
           path: ~/summary.md
         if: always()
-
