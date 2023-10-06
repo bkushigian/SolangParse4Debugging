@@ -676,7 +676,7 @@ def main():
         tool.print_summary(short=True)
 
     # Write a summary markdown
-    summary_md = "| **tool** | **#sources** | **#successes** | **#failures** | **success rate** |\n\n"
+    summary_md = "| **tool** | **#sources** | **#successes** | **#failures** | **success rate** |\n"
     summary_md += "| -------- | ------------ | -------------- | ------------- | ---------------- |\n"
     json_data = []
     for rd in (solc_run_data, solang_parser_run_data, gambit_run_data):

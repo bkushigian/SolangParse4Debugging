@@ -139,9 +139,3 @@ jobs:
         with:
           name: tool-run-data
           path: ~/**/data_collect
-
-      - uses: actions/upload-artifact@v3
-        # if: github.event_name == 'schedule'
-        with:
-          name: summary
-          path: ~/summary.md
