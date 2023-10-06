@@ -19,16 +19,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Clone Gambit repository
+      - name: Install Run On Hardhat Script
         run: |
-          cd ~
-          git clone -b ben/build_scripts https://github.com/Certora/Gambit
-          pwd
-          ls -a
-          ls Gambit
-          ls Gambit/scripts
-          chmod +x Gambit/scripts/run_on_hardhat.py
-          ln -s $PWD/Gambit/scripts/run_on_hardhat.py /usr/local/bin/run_on_hardhat
+          chmod +x python/run_on_hardhat.py
+          ln -s "$PWD"/python/run_on_hardhat.py /usr/local/bin/run_on_hardhat
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
