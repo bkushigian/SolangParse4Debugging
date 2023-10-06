@@ -105,12 +105,21 @@ jobs:
         run: |
           # Get a filename for current run based on date
           DATE=$(date +"%Y-%m-%d")
-          FILENAME="nightlies/$DATE.md"
+          MD_FILENAME="nightlies/markdown/$DATE.md"
+          JSON_FILENAME="nightlies/json/$DATE.json"
           if [ ! -e nightlies ]; then
             mkdir nightlies
           fi
-          cp ~/summary.md "$FILENAME"
-          git add $FILENAME
+          if [ ! -e nightlies/markdown ]; then
+            mkdir nightlies/markdown
+          fi
+          if [ ! -e nightlies/json ]; then
+            mkdir nightlies/json
+          fi
+          cp ~/summary.md "$MD_FILENAME"
+          cp ~/summary.json "$JSON_FILENAME"
+          git add "$MD_FILENAME"
+          git add "$JSON_FILENAME"
           git diff --cached --quiet || git commit -m "Update nightlies"
           git push
 
