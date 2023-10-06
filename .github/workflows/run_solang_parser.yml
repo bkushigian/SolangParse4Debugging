@@ -93,7 +93,7 @@ jobs:
 
       - name: Commit and Push Summary
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PUSH_ACCESS_PAT }}
         run: |
           # Get a filename for current run based on date
           DATE=$(date +"%Y-%m-%d")
