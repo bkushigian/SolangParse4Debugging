@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    if: github.actor != 'github-actions[bot]' && github.actor != 'github-actions'
     runs-on: ubuntu-latest
 
     steps:
@@ -53,6 +54,7 @@ jobs:
           chmod +x solc-static-linux
           sudo mv solc-static-linux /usr/local/bin/solc8.20
 
+      # [Collect Data From Different OS Repos]
       - name: Collect Data on Seaport
         run: |
           cd ~
@@ -83,14 +85,37 @@ jobs:
           echo "# OpenZeppelin Summary" >> ~/summary.md
           cat summary.md >> ~/summary.md
 
+      # [Push Summary to Repo]
+      - name: Configure Git
+        if: github.event_name == 'schedule'
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Commit and Push Summary
+        if: github.event_name == 'schedule'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get a filename for current run based on date
+          DATE=$(date +"%Y-%m-%d")
+          FILENAME="nightlies/$DATE.md"
+          if [ ! -e nightlies ]; then
+            mkdir nightlies
+          fi
+          cp ~/summary.md "$FILENAME"
+          git add summary.md
+          git diff --cached --quiet || git commit -m "Update summary.md"
+          git push
+
       - uses: actions/upload-artifact@v3
+        if: github.event_name == 'schedule'
         with:
           name: tool-run-data
           path: ~/**/data_collect
-        if: always()
 
       - uses: actions/upload-artifact@v3
+        if: github.event_name == 'schedule'
         with:
           name: summary
           path: ~/summary.md
-        if: always()
