@@ -12,5 +12,5 @@ for summary_json in argv[1:]:
         # Read contents as json
         contents = json.loads(contents)
     summaries[project_name] = contents
-with open("summaries.json", "w") as f:
+with open("summary.json", "w") as f:
     f.write(json.dumps(summaries, indent=2))
