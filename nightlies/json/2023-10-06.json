@@ -1,0 +1,44 @@
+{
+  "openzeppelin": [
+    {
+      "name": "solc8.20",
+      "num_sources": 212,
+      "num_successes": 212,
+      "num_failures": 0
+    },
+    {
+      "name": "solang_parser",
+      "num_sources": 212,
+      "num_successes": 118,
+      "num_failures": 94
+    }
+  ],
+  "seaport": [
+    {
+      "name": "solc8.17",
+      "num_sources": 87,
+      "num_successes": 87,
+      "num_failures": 0
+    },
+    {
+      "name": "solang_parser",
+      "num_sources": 87,
+      "num_successes": 28,
+      "num_failures": 59
+    }
+  ],
+  "solmate": [
+    {
+      "name": "solc8.15",
+      "num_sources": 20,
+      "num_successes": 20,
+      "num_failures": 0
+    },
+    {
+      "name": "solang_parser",
+      "num_sources": 20,
+      "num_successes": 17,
+      "num_failures": 3
+    }
+  ]
+}
