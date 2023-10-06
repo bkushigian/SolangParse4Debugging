@@ -102,8 +102,8 @@ jobs:
             mkdir nightlies
           fi
           cp ~/summary.md "$FILENAME"
-          git add summary.md
-          git diff --cached --quiet || git commit -m "Update summary.md"
+          git add $FILENAME
+          git diff --cached --quiet || git commit -m "Update nightlies"
           git push
 
       - uses: actions/upload-artifact@v3
