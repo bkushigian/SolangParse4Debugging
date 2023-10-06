@@ -118,8 +118,14 @@ jobs:
           fi
           cp ~/summary.md "$MD_FILENAME"
           cp ~/summary.json "$JSON_FILENAME"
+          if [ -e nightlies/current.md ] ; then 
+            rm nightlies/current.md
+          fi
+          cp "$MD_FILENAME" nightlies/current.md
           git add "$MD_FILENAME"
           git add "$JSON_FILENAME"
+          git add nightlies/current.md
+
           git diff --cached --quiet || git commit -m "Update nightlies"
           git push
 

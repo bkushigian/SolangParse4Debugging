@@ -683,7 +683,7 @@ def main():
         if rd is None:
             continue
         summary_md += f"| {rd.tool_name} | {rd.num_sources()} | {rd.num_successes()} | {rd.num_failures()} | {rd.success_rate()} |\n"
-        json_data.appen(rd.to_summary_json())
+        json_data.append(rd.to_summary_json())
     with open("summary.md", "w", encoding="utf-8") as f:
         f.write(summary_md)
     with open("summary.json", "w", encoding="utf-8") as f:
