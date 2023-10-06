@@ -87,11 +87,13 @@ jobs:
 
       # [Push Summary to Repo]
       - name: Configure Git
+        if: github.event_name == 'schedule'
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
       - name: Commit and Push Summary
+        if: github.event_name == 'schedule'
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PUSH_ACCESS_PAT }}
         run: |
@@ -107,11 +109,13 @@ jobs:
           git push
 
       - uses: actions/upload-artifact@v3
+        if: github.event_name == 'schedule'
         with:
           name: tool-run-data
           path: ~/**/data_collect
 
       - uses: actions/upload-artifact@v3
+        if: github.event_name == 'schedule'
         with:
           name: summary
           path: ~/summary.md
