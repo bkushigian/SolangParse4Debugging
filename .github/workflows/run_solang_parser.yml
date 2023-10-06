@@ -59,7 +59,9 @@ jobs:
           cd seaport
           npm install
           run_on_hardhat . contracts --collect_data --solc solc8.17 --solang_parser
+          echo "" >> ~/summary.md
           echo "## Seaport Summary" >> ~/summary.md
+          echo "" >> ~/summary.md
           cat summary.md >> ~/summary.md
           mv summary.json ~/seaport_summary.json
 
@@ -70,7 +72,9 @@ jobs:
           cd solmate
           npm install
           run_on_hardhat . src/auth src/mixins src/tokens src/utils  --collect_data --solc solc8.15 --solang_parser --import_paths . src lib
+          echo "" >> ~/summary.md
           echo "## Solmate Summary" >> ~/summary.md
+          echo "" >> ~/summary.md
           cat summary.md >> ~/summary.md
           mv summary.json ~/solmate_summary.json
 
@@ -81,7 +85,9 @@ jobs:
           cd openzeppelin-contracts
           npm install
           run_on_hardhat . contracts --collect_data --solc solc8.20 --solang_parser
+          echo "" >> ~/summary.md
           echo "## OpenZeppelin Summary" >> ~/summary.md
+          echo "" >> ~/summary.md
           cat summary.md >> ~/summary.md
           mv summary.json ~/openzeppelin_summary.json
 
