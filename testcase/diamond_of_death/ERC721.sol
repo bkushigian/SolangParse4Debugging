@@ -3,7 +3,6 @@
 
 pragma solidity ^0.8.19;
 
-import {IERC721} from "./IERC721.sol";
 import {ERC165} from "./ERC165.sol";
 
 abstract contract ERC721 is ERC165 {
