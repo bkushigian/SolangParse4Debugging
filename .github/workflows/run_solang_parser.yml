@@ -60,19 +60,19 @@ jobs:
 
       - name: Collect Data on Seaport
         run: |
-          run_on_repo Seaport https://github.com/ProjectOpenSea/seaport solc8.17
+          run_on_repo Seaport https://github.com/ProjectOpenSea/seaport solc8.17 contracts
 
       - name: Collect Data on Solmate
         run: |
-          run_on_repo Solmate https://github.com/transmissions11/solmate  solc8.15
+          run_on_repo Solmate https://github.com/transmissions11/solmate  solc8.15  src/auth src/mixins src/tokens src/utils
 
       - name: Collect Data on OpenZeppelin
         run: |
-          run_on_repo "OpenZeppelin Contracts" https://github.com/OpenZeppelin/openzeppelin-contracts  solc8.20
+          run_on_repo "OpenZeppelin Contracts" https://github.com/OpenZeppelin/openzeppelin-contracts  solc8.20 contracts
 
       - name: Collect Data on GMX Synthetics
         run: |
-          run_on_repo "GMX Synthetics" https://github.com/Certora/gmx-synthetics_all solc8.20
+          run_on_repo "GMX Synthetics" https://github.com/Certora/gmx-synthetics_all solc8.20 contracts
 
       # Combine summary jsons
       - name: Combine JSONs
