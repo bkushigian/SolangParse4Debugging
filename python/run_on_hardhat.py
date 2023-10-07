@@ -688,7 +688,7 @@ def main():
         print("Writing summary.md")
         f.write(summary_md)
     with open("summary.json", "w", encoding="utf-8") as f:
-        print("summary.json")
+        print("Writing summary.json")
         json.dump(json_data, f, indent=2)
 
 
