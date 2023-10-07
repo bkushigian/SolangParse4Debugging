@@ -24,6 +24,6 @@ echo "## $PROJECT_NAME Summary" >> ~/summary.md
 echo "" >> ~/summary.md
 cat summary.md >> ~/summary.md
 
-echo "Moving summary.json to ~/${REPO_NAME}_summary.json"
+echo "Moving summary.json to $HOME/${REPO_NAME}_summary.json"
 [ ! -e summary.json ] && { echo "summary.json does not exist"; exit 1; }
-mv summary.json "~/${REPO_NAME}_summary.json"
+mv summary.json "$HOME/${REPO_NAME}_summary.json"
