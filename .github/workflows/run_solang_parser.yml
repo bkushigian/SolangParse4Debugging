@@ -35,17 +35,23 @@ jobs:
       - name: Install this repo
         run: cargo install --path .
 
-      - name: Download and install solc 0.8.17
+      - name: Download and install solc 0.8.10
         run: |
-          wget https://github.com/ethereum/solidity/releases/download/v0.8.17/solc-static-linux
+          wget https://github.com/ethereum/solidity/releases/download/v0.8.10/solc-static-linux
           chmod +x solc-static-linux
-          sudo mv solc-static-linux /usr/local/bin/solc8.17
+          sudo mv solc-static-linux /usr/local/bin/solc8.10
 
       - name: Download and install solc 0.8.15
         run: |
           wget https://github.com/ethereum/solidity/releases/download/v0.8.15/solc-static-linux
           chmod +x solc-static-linux
           sudo mv solc-static-linux /usr/local/bin/solc8.15
+
+      - name: Download and install solc 0.8.17
+        run: |
+          wget https://github.com/ethereum/solidity/releases/download/v0.8.17/solc-static-linux
+          chmod +x solc-static-linux
+          sudo mv solc-static-linux /usr/local/bin/solc8.17
 
       - name: Download and install solc 0.8.20
         run: |
@@ -73,6 +79,9 @@ jobs:
       - name: Collect Data on GMX Synthetics
         run: |
           run_on_repo "GMX Synthetics" https://github.com/Certora/gmx-synthetics_all solc8.20 contracts
+
+      - name: "Run on AAVE StarkNet Bridge"
+        run: run_on_repo "AAVE StarkNet Bridge" https://github.com/Certora/aave-starknet-bridge contracts
 
       # Combine summary jsons
       - name: Combine JSONs
