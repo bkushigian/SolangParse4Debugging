@@ -19,10 +19,15 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install Run On Hardhat Script
+      - name: Install run_on_hardhat.py Script
         run: |
           chmod +x python/run_on_hardhat.py
           ln -s "$PWD"/python/run_on_hardhat.py /usr/local/bin/run_on_hardhat
+
+      - name: Install run_on_repo.sh Script
+        run: |
+          chmod +x bash/run_on_repo.sh
+          ln -s "$PWD"/bash/run_on_repo.sh /usr/local/bin/run_on_repo
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
@@ -52,44 +57,22 @@ jobs:
       - name: "Setup Summary"
         run: |
           echo "# Summary" > ~/summary.md
+
       - name: Collect Data on Seaport
         run: |
-          cd ~
-          git clone https://github.com/ProjectOpenSea/seaport
-          cd seaport
-          npm install
-          run_on_hardhat . contracts --collect_data --solc solc8.17 --solang_parser
-          echo "" >> ~/summary.md
-          echo "## Seaport Summary" >> ~/summary.md
-          echo "" >> ~/summary.md
-          cat summary.md >> ~/summary.md
-          mv summary.json ~/seaport_summary.json
+          run_on_repo Seaport https://github.com/ProjectOpenSea/seaport solc8.17
 
       - name: Collect Data on Solmate
         run: |
-          cd ~
-          git clone https://github.com/transmissions11/solmate
-          cd solmate
-          npm install
-          run_on_hardhat . src/auth src/mixins src/tokens src/utils  --collect_data --solc solc8.15 --solang_parser --import_paths . src lib
-          echo "" >> ~/summary.md
-          echo "## Solmate Summary" >> ~/summary.md
-          echo "" >> ~/summary.md
-          cat summary.md >> ~/summary.md
-          mv summary.json ~/solmate_summary.json
+          run_on_repo Solmate https://github.com/transmissions11/solmate  solc8.15
 
       - name: Collect Data on OpenZeppelin
         run: |
-          cd ~
-          git clone https://github.com/OpenZeppelin/openzeppelin-contracts
-          cd openzeppelin-contracts
-          npm install
-          run_on_hardhat . contracts --collect_data --solc solc8.20 --solang_parser
-          echo "" >> ~/summary.md
-          echo "## OpenZeppelin Summary" >> ~/summary.md
-          echo "" >> ~/summary.md
-          cat summary.md >> ~/summary.md
-          mv summary.json ~/openzeppelin_summary.json
+          run_on_repo "OpenZeppelin Contracts" https://github.com/OpenZeppelin/openzeppelin-contracts  solc8.20
+
+      - name: Collect Data on GMX Synthetics
+        run: |
+          run_on_repo "GMX Synthetics" https://github.com/Certora/gmx-synthetics_all solc8.20
 
       # Combine summary jsons
       - name: Combine JSONs
