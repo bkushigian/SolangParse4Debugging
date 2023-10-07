@@ -3,7 +3,7 @@
 PROJECT_NAME="$1"
 REPO="$2"
 SOLC="$3"
-REPO_NAME=$ echo ${REPO##*/}
+REPO_NAME=${REPO##*/}
 
 cd ~
 echo "Cloning $PROJECT_NAME at $REPO to $REPO_NAME"
