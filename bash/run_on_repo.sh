@@ -6,7 +6,7 @@ SOLC="$3"
 REPO_NAME=${REPO##*/}
 
 cd ~
-echo "Cloning $PROJECT_NAME at $REPO to $REPO_NAME"
+echo "Cloning $PROJECT_NAME from $REPO to $REPO_NAME"
 git clone "$REPO"
 cd "$REPO_NAME"
 npm install
