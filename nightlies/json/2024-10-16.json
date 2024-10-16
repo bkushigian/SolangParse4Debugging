@@ -1,0 +1,58 @@
+{
+  "gmx-synthetics_all": [
+    {
+      "name": "solc8.20",
+      "num_sources": 122,
+      "num_successes": 34,
+      "num_failures": 88
+    },
+    {
+      "name": "solang_parser",
+      "num_sources": 122,
+      "num_successes": 29,
+      "num_failures": 93
+    }
+  ],
+  "openzeppelin-contracts": [
+    {
+      "name": "solc8.20",
+      "num_sources": 264,
+      "num_successes": 247,
+      "num_failures": 17
+    },
+    {
+      "name": "solang_parser",
+      "num_sources": 264,
+      "num_successes": 123,
+      "num_failures": 141
+    }
+  ],
+  "seaport": [
+    {
+      "name": "solc8.17",
+      "num_sources": 87,
+      "num_successes": 59,
+      "num_failures": 28
+    },
+    {
+      "name": "solang_parser",
+      "num_sources": 87,
+      "num_successes": 29,
+      "num_failures": 58
+    }
+  ],
+  "solmate": [
+    {
+      "name": "solc8.15",
+      "num_sources": 20,
+      "num_successes": 20,
+      "num_failures": 0
+    },
+    {
+      "name": "solang_parser",
+      "num_sources": 20,
+      "num_successes": 17,
+      "num_failures": 3
+    }
+  ]
+}
